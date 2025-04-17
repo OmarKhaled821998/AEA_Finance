@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-<div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-tl from-[#94849a] via-[#8a619e] to-[#5e396d] text-[#2c4085]">
+<div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-tl from-[#5d5c8a] via-[#60496b] to-[rgb(56,42,92)] text-[#191c5b]">
 {/* Left Section (Form) */}
       <div className="h-full flex flex-col items-center justify-center px-6 py-12">
         <div className="text-center space-y-6">
