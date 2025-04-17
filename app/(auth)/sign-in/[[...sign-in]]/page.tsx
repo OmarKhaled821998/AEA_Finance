@@ -31,7 +31,7 @@ export default function Page() {
         <div className="relative z-10">
           <Image
             src="/logo.svg" // Ensure this path is correct
-            alt="AEA New Finance Logo"
+            alt="AEA Finance Logo"
             width={200}
             height={200}
             className="rounded-lg drop-shadow-[0_0_20px_rgba(207,141,255,0.6)]"
