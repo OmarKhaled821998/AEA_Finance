@@ -21,6 +21,9 @@ import { UploadButton } from "./upload-button";
 import { ImportCard } from "./import-card";
 import { ExportToExcelButton } from "@/components/ExportToExcelButton";
 
+// Import date-fns for date formatting
+import { format } from "date-fns";
+
 enum VARIANTS {
   LIST = "LIST",
   IMPORT = "IMPORT",
@@ -76,6 +79,16 @@ const TransactionsPage = () => {
     });
   };
 
+  // Format the 'date' field to 'YYYY-MM-DD' before exporting
+  const formattedTransactions = transactions.map((transaction) => {
+    return {
+      ...transaction,
+      date: transaction.date
+        ? format(new Date(transaction.date), "yyyy-MM-dd") // Format the date field to YYYY-MM-DD
+        : "",
+    };
+  });
+
   if (transactionsQuery.isLoading) {
     return (
       <div className="max-w-screen-2xl mx-auto -mt-24 pb-10 w-full">
@@ -123,7 +136,7 @@ const TransactionsPage = () => {
               Add new
             </Button>
             <UploadButton onUpload={onUpload} />
-            <ExportToExcelButton data={transactions} />
+            <ExportToExcelButton data={formattedTransactions} />
           </div>
         </CardHeader>
         <CardContent>
