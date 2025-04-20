@@ -36,13 +36,6 @@
       "when": 1718282556697,
       "tag": "0004_flippant_gressill",
       "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1744975300989,
-      "tag": "0005_thankful_siren",
-      "breakpoints": true
     }
   ]
 }
