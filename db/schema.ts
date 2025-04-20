@@ -29,6 +29,27 @@ export const categoriesRelations = relations(categories, ({ many }) => ({
 
 export const insertCategorySchema = createInsertSchema(categories);
 
+
+//output category
+
+
+
+export const outputCategories = pgTable("outputCategories", {
+  id: text("id").primaryKey(),
+  plaidId: text("plaid_id"),
+  name: text("name").notNull(),
+  userId: text("user_id").notNull(),
+});
+
+export const outputCategoriesRelations = relations(outputCategories, ({ many }) => ({
+  transactions: many(transactions),
+}));
+
+export const insertoutputCategories = createInsertSchema(outputCategories);
+
+
+
+
 export const transactions = pgTable("transactions", {
   id: text("id").primaryKey(),
   amount: integer("amount").notNull(),

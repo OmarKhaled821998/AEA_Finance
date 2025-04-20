@@ -299,4 +299,18 @@ const app = new Hono()
     },
   );
 
+  function formatTransactions(data: typeof dataFromDb) {
+    return data.map((row) => ({
+      id: row.id,
+      date: row.date,
+      category: row.category,
+      categoryId: row.categoryId,
+      payee: row.payee,
+      amount: row.amount,
+      notes: row.notes,
+      account: row.account,
+      accountId: row.accountId,
+    }));
+  }
+  
 export default app;
