@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { format, subDays } from "date-fns";
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
 import { DateRange } from "react-day-picker";
 import { ChevronDown } from "lucide-react";
 
 import qs from "query-string";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { useGetSummary } from "@/features/summary/api/use-get-summary";
-
-import { cn, formatDateRange } from "@/lib/utils";
+import { formatDateRange } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -30,7 +28,7 @@ export const DateFilter = () => {
   const to = params.get("to") || "";
 
   const defaultTo = new Date();
-  const defaultFrom = subDays(defaultTo, 30);
+  const defaultFrom = new Date("2021-01-01");
 
   const paramState = {
     from: from ? new Date(from) : defaultFrom,
@@ -61,6 +59,15 @@ export const DateFilter = () => {
     setDate(undefined);
     pushToUrl(undefined);
   };
+
+  // ✅ Automatically apply default range on first load if URL has no from/to
+  useEffect(() => {
+    if (!from && !to) {
+      const initialRange = { from: defaultFrom, to: defaultTo };
+      setDate(initialRange);
+      pushToUrl(initialRange);
+    }
+  }, []);
 
   return (
     <Popover>
